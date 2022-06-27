@@ -9,22 +9,19 @@
     --information-color: rgb(72, 96, 161);
     /* information-font the font-family for main and footer */
     --information-font: Verdana, Geneva, Tahoma, sans-serif;
+    /* margin-between put a margin between about me, work, and the footer */
+    --margin-between: 20px;
+    /* img-border-width sets the border around the images in main*/
+    --img-border-width: 5px;
 }
 
 * {
     box-sizing: border-box;
 }
 
-p {
-    font-size: 16px;
-}
-
 body {
     background-color: var(--body-background);
     margin: 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
     line-height: 1.3;
 }
 
@@ -36,7 +33,6 @@ header {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: var(--header-background);
     color: var(--accent-color);
-    
 }
 
 header h1 {
@@ -47,9 +43,9 @@ header h1 {
     padding-left: 100px;
     padding-right: 25px;
     margin-left:-50px;
-    
 }
 
+/* nav controls the links in the header */
 nav {
     display: flex;
     justify-content: space-between;
@@ -69,75 +65,185 @@ nav a:hover {
 }
 
 /* forst-drawing changes the image of the forest between the header and main */
+/*  */
 .forest-drawing {
     background-image: url("../images/forst-drawing.jpg");
     height: 400px;
     width: 100%;
     margin-left: auto;
-    margin-bottom: 20px;
+    margin-bottom: var(--margin-between);
     margin-block-start: auto;
     background-size: cover;
     background-position: center;
-    
 }
 
+/* main controls about-me and work */
 main {
-    display:flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     color: var(--information-color);
     font-size: 20px;
     font-family: var(--information-font);
 }
 
-/*  */
-.about-me{
-    display: flex;
-    background-color: black;
-    margin-bottom: 20px;
+/* about-me changes the about me section */
+.about-me {
+    display: inline-table;
+    margin-bottom: var(--margin-between);
     padding: 50px;
-    height: 300px;
-
+    height: 400px;
+    justify-content: space-between;
 }
 
-.about-me h1{
-    margin-left: 380px;
-}
-
-.work{
+.about-me img {
     display: flex;
-    background-color: grey;
-    margin-bottom:20px;
-    padding: 50px;
-    height: 300px;
-   
+    border-style: solid;
+    border-color: var(--accent-color);
+    border-width: var(--img-border-width);
 }
 
-footer{
-    background-color: aqua;
+.about-me h1 {
     display: flex;
-    color: var(--information-color);
-    font-family: var(--information-font);
-    margin-bottom: 20px;
+    align-items: center;
+    text-align: center;
     padding: 50px;
-    height: 300px;
 }
 
-.float-right{
-    float: right;
-    margin-left:20px;
+.about-me p {
+    font-size: 16px;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+    min-width:0;
+    color: black;
 }
 
-.float-left{
+/* work changes the work section */
+.work {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 4;
+    margin-bottom: var(--margin-between);
+    padding: 50px;
+    justify-content: center;
+    column-gap: 200px;
+}
+
+.work h1 {
+    align-items: center;
+    justify-content: center;
+}
+
+/* Background image for the most recent work section 
+    Used activity 6 Responsive Design as a guide */
+.most-recent-work {
+    display: flex;
+    height: 380px;
+    flex: 1 0 400px;
+    border-style: solid;
+    border-color: var(--accent-color);
+    border-width: var(--img-border-width);
+    padding: 0;
+    filter:grayscale(50%);
+    margin-bottom: -50px;
+}
+
+.most-recent-work:hover { 
+    filter: none;
+}
+
+/* Effects the p tag inside of most-recent-work  */
+.most-recent-work-info {
+    display:flex;
+    background-color: var(--accent-color);
+    color: black;
+    flex: 1 0 400px;
+    height: 50px;
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 60px;
+}
+
+.future-work {
+    display: flex;
+    height: 200px;
+    flex: 0 0 200px;
+    border-style: solid;
+    border-color: var(--accent-color);
+    border-width: var(--img-border-width);
+    padding: 0;
+    margin: 10px;
+    filter:grayscale(50%);
+}
+
+.future-work:hover {
+    filter: none;
+}
+
+.future-work-info {
+    display:grid;
+    background-color: var(--accent-color);
+    color: black;
+    flex: 1 0 400px;
+    height: 50px;
+    width: 40%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 100px;
+    left: 10px;
+}
+
+
+/* floats the image of me to the left in the about me section
+    and the work h1 */
+.float-left {
     float: left;
     margin-right:20px;
 }
 
+footer {
+    display: flex;
+    background-color: var(--header-background);
+    color: var(--accent-color);
+    font-family: var(--information-font);
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    min-width: 300px;
+}
 
+footer h1 {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+footer p {
+    text-decoration: underline;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: underline;
+    padding: 10px;
+    margin: 0px;
+    align-items: center;
+}
+
+footer a:hover {
+    color:#fff;
+}
+
+/* Controls the responsive layout of the application */
 @media screen and (max-width: 768px) {
     header,
     nav,
-    figure,
     main,
     footer { 
-      flex-direction: column;
+        flex-direction: column;
     }
   }
